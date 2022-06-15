@@ -1,0 +1,42 @@
+<?php
+$ch = curl_init();
+$user = substr(str_shuffle( 'abcdefghijklmnopqrstuvwxyz'),0,7);
+$email = "$user" . "@gmail.com";
+$Password = $b = substr(str_shuffle( 'abcdefghijklmnopqrstuv@wxyzABCDEFGHIJKLMN@._-1234@##$=%567890'),0,10);
+curl_setopt($ch, CURLOPT_URL, 'https://www.pythonanywhere.com/registration/register/beginner/');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "csrfmiddlewaretoken=nGDsz61R1ZLLJXBJhbm2neymiRcpxAvgcbcqLr86x1hXa59MzC4PaPRSou1oKp4X&username=$user&email=$email&password1=$Password&password2=$Password&tos=on&recaptcha_response_token_v3=");
+curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+
+$headers = array();
+$headers[] = 'Connection: keep-alive';
+$headers[] = 'Cache-Control: max-age=0';
+$headers[] = 'Sec-Ch-Ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\"';
+$headers[] = 'Sec-Ch-Ua-Mobile: ?1';
+$headers[] = 'Sec-Ch-Ua-Platform: \"Android\"';
+$headers[] = 'Upgrade-Insecure-Requests: 1';
+$headers[] = 'Origin: https://www.pythonanywhere.com';
+$headers[] = 'Content-Type: application/x-www-form-urlencoded';
+$headers[] = 'User-Agent: Mozilla/5.0 (Linux; Android 11; M2101K6I) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.47 Mobile Safari/537.36';
+$headers[] = 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9';
+$headers[] = 'Sec-Fetch-Site: same-origin';
+$headers[] = 'Sec-Fetch-Mode: navigate';
+$headers[] = 'Sec-Fetch-User: ?1';
+$headers[] = 'Sec-Fetch-Dest: document';
+$headers[] = 'Referer: https://www.pythonanywhere.com/registration/register/beginner/';
+$headers[] = 'Accept-Language: ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7';
+$headers[] = 'Cookie: cookie_warning_seen=True; _ga=GA1.1.1602420394.1641985020; _gid=GA1.1.350708453.1641985020; csrftoken=q3dNIBdJ1M12s1uwNsBjCwFhqhifeHyUfyMLUWkYxOxeT92z5Tj6p7YNwU7erw7B; sessionid=wphraqsbtesd5vp7cxavfz8cy70ttgrw';
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+$result = curl_exec($ch);
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+}
+curl_close($ch);
+echo "User : $user
+
+Email : $email
+
+Pass : $Password
+By @akd4444s ";
